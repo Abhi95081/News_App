@@ -21,18 +21,22 @@ fun NewsScreen() {
         "Tech: New smartphone released today",
         "Sports: Local team wins championship",
         "World: Major summit happening now",
-        "Abhishek Roushan: Good Man Now a day",
-        "Abhishek Roushan: Good Man Now a day",
-        "Abhishek Roushan: Good Man Now a day",
-        "Abhishek Roushan: Good Man Now a day",
-        "Abhishek Roushan: Good Man Now a day"
+        "Abhishek Roushan: Good Man Nowadays"
     )
 
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background).padding(20.dp)
+            .background(MaterialTheme.colorScheme.background)
+            .padding(16.dp)
     ) {
+        Text(
+            text = "Latest News",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(bottom = 12.dp)
+        )
         NewsList(newsItems)
     }
 }
@@ -40,7 +44,7 @@ fun NewsScreen() {
 @Composable
 fun NewsList(newsItems: List<String>, modifier: Modifier = Modifier) {
     LazyColumn(
-        modifier = modifier.padding(16.dp),
+        modifier = modifier.padding(vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(newsItems) { news ->
@@ -55,12 +59,12 @@ fun NewsCard(news: String) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 8.dp),
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
@@ -69,7 +73,7 @@ fun NewsCard(news: String) {
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
             )
-            Divider(color = Color.Gray.copy(alpha = 0.3f))
+            Divider(color = Color.Gray.copy(alpha = 0.2f))
             Text(
                 text = "Tap to read more...",
                 fontSize = 14.sp,
