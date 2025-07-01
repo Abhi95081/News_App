@@ -13,6 +13,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             NewsAppTheme {
                 NewsScreen()
+                //newsapi.org/
+                //https://newsapi.org/v2/top-headlines?country=us&apiKey=38eec33c66ec45f0b6ad9f5ea7628d0a
             }
         }
     }
