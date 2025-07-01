@@ -1,3 +1,5 @@
+package com.example.newsapp
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,10 +23,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.newsapp.ui.theme.NewsAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -61,7 +61,8 @@ fun NewsList(newsItems: List<String>, modifier: Modifier = Modifier) {
             .padding(16.dp)
     ) {
         items(newsItems) { news ->
-            NewsCard(news) { /* Handle click event */ }
+            NewsCard(news)
+            { /* Handle click event */ }
         }
     }
 }
@@ -95,13 +96,5 @@ fun NewsCard(news: String, onClick: () -> Unit) {
                 modifier = Modifier.align(Alignment.End)
             )
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewNewsScreen() {
-    NewsAppTheme {
-        NewsScreen()
     }
 }
