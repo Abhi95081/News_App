@@ -1,10 +1,14 @@
 package com.example.newsapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.example.newsapp.network.ApiProvider
 import com.example.newsapp.ui.theme.NewsAppTheme
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,9 +16,12 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NewsAppTheme {
-                NewsScreen()
+
+
+
                 //newsapi.org/
                 //https://newsapi.org/v2/top-headlines?country=us&apiKey=38eec33c66ec45f0b6ad9f5ea7628d0a
+
             }
         }
     }
