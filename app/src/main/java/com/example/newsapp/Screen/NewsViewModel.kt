@@ -5,27 +5,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsapp.NewsModel
 import com.example.newsapp.repo.Repo
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.launch
 
-class NewsViewModel(private val repo: Repo) : ViewModel() {
+class NewsViewModel() : ViewModel() {
 
-    val res = mutableStateOf(Result)
+    var res = mutableStateOf<NewsModel?>(null)
 
     init {
-        getNews()
+        viewModelScope.launch {
+            res.value = getNews(Repo())
+
+        }
     }
 
-    fun getNews()= flow<Result<NewsModel>> {
 
-        emit(Result.Loading(""))
-        try {
-            emit(Result.Success(data = repo.newProvider().body()))
-        }catch (
-            e:Exception
-        ){
-            emit(Result.Error(e.localizedMessage))
-        }
+    suspend fun getNews(repo: Repo) : NewsModel?{
+        return repo.newProvider().body()
 
     }
 }
